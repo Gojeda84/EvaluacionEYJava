@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class User {
+public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -18,11 +18,11 @@ public class User {
 	private String password;
 	private String token;      // Para el token JWT
 
-	public User() {
+	public Usuario() {
 		super();
 	}
 
-	public User(Long id, String name, String email, List<Phone> phone, String password, String token) {
+	public Usuario(Long id, String name, String email, List<Phone> phone, String password, String token) {
 		super();
 		this.id = id;
 		this.name = name;

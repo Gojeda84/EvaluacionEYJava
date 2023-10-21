@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.evaluacion.java.model.User;
+import com.evaluacion.java.model.Usuario;
 import com.evaluacion.java.repository.UserRepository;
 import com.evaluacion.java.security.JwtTokenProvider;
 
@@ -60,13 +60,13 @@ public class UserService {
      * @param user
      * @return
      */
-    public User registrarUsuario(User user) {
+    public Usuario registrarUsuario(Usuario user) {
     	// Encriptar la contraseña antes de guardarla en la base de datos
         String contrasenaEncriptada = new BCryptPasswordEncoder().encode(user.getPassword());
         user.setPassword(contrasenaEncriptada);
         
         // Guardar el usuario en la base de datos
-        User nuevoUsuario = userRepository.save(user);
+        Usuario nuevoUsuario = userRepository.save(user);
         
         // Generar un token JWT y asignarlo al usuario
         String token = jwtTokenProvider.createToken(user.getEmail());
